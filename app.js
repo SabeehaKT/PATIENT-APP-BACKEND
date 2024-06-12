@@ -15,6 +15,21 @@ app.post("/add",(req,res)=>{
     res.json({"status":"added"})
 })
 
+
+app.post("/search",(req,res)=>{
+    let input = req.body
+    patientmodel.find(input).then(
+        (data=>{
+            res.json(data)
+        })
+    ).catch(
+        (error)=>{
+            res.json(error)
+        }
+    )
+})
+
+
 app.get("/view",(req,res)=>{
     patientmodel.find().then(
         (data)=>{
